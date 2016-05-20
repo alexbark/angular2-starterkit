@@ -20,7 +20,6 @@ var ItemComponent = (function () {
         this.router = router;
         this.fb = fb;
         this.editingItem = false;
-        this.itemId = window.location.href.split('/');
         this.editForm = this.fb.group({
             'title': ['', common_1.Validators.required],
             'author': ['', common_1.Validators.required],

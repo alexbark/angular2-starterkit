@@ -45,7 +45,7 @@ export class ItemService {
 
 	}
 
-	editItem(id. obj){
+	editItem(id, obj){
 		var body = JSON.stringify(obj);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');

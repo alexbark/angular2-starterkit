@@ -17,7 +17,7 @@ import { ItemService} from './../../services/itemsProvider/itemsProvider.service
 
 export class ItemComponent implements OnInit{
     editingItem: boolean = false;
-    itemId: string = window.location.href.split('/');
+    itemId: string;
 	item;
     editForm: any;
 

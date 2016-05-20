@@ -44,7 +44,6 @@ app.post('/api/items/', function(req, res){
 })
   
 app.post('/api/items/:id', function(req, res){
-    console.log(req.params.id + "/" + req.body.title);
     Item.update({_id: req.params.id}, req.body, function(err){
         res.send({_id: req.params.id});
     })
