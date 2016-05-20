@@ -1,0 +1,27 @@
+h3{
+	font-size: 1.3em;
+}
+label{
+	margin-top: 1em;
+	display: inline-block;
+	width: 6em;
+	font-size: 1.2em;
+}
+textarea{
+	margin-top: 1em;
+}
+
+.button{
+	margin-top:0.6em;
+	margin-left:7em; 
+	border: 1px solid #70A2BD;
+	background: #70A2BD;
+	color:#F0F0F0;
+	font-weight:bold;
+}
+.button:hover{
+	background: #5087A5;
+}
+.button:active{
+	background: #447088;
+}

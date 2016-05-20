@@ -1,0 +1,81 @@
+label{
+	display: inline-block;
+	width: 6em;
+}
+
+.editItem{
+	position: relative;
+}
+.editItem input, .editItem textarea{
+	margin-bottom: 1em;
+	color: #424342;
+}
+.editItem textarea{
+	margin-top:1em; 
+	margin-left: 7em;
+}
+
+.editItem button{
+	border: 1px solid #70A2BD;
+	background: #70A2BD;
+	color:#F0F0F0;
+	font-weight:bold;
+	margin-left: 6em;
+}
+.editItem label[for="content"]{
+	display: inline-block;
+	position: absolute;
+	left:0;
+	top:7em;
+}
+h3{
+	font-size: 1.6em;
+	font-weight: bold;
+	text-indent: 0.8em;
+}
+h3:first-letter{
+	text-transform: capitalize;
+}
+.author{
+	font-size: 1.2em;
+	font-style: italic;
+	margin-bottom: 1em;
+	
+}
+
+.content{
+	font-size: 1.1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	line-height: 1.3em;
+}
+.actions .button:first-child{
+    float:left;
+	border: 1px solid #70A2BD;
+	background: #70A2BD;
+	color:#F0F0F0;
+	font-weight:bold;
+}
+.actions .button:first-child:hover{
+    background: #5087A5;
+}
+.actions .button:first-child:focus{
+    background: #447088;
+    -moz-outline-style: none; 
+    outline: none;
+}
+.actions .button:last-child{
+	float:right;
+	border: 1px solid #DEDEDE;
+	background: #FCFCFC;
+	color:gray;
+	font-weight:bold;
+}
+.actions .button:last-child:hover{
+   background:#DBAF85;
+}
+.actions .button:last-child:focus{
+   background:#BB7B3E;
+   -moz-outline-style: none; 
+   outline: none;
+}
