@@ -14,7 +14,8 @@
    <form [ngFormModel]="editForm">
      <label for="">Title: </label><input  value="{{item.title}}" ngControl="title"/><br>
      <label for="">Author: </label><input type="text" value="{{item.author}}" ngControl="author"/><br>
-     <label for="content">Content: </label><textarea value="{{item.content}}" ngControl="content" cols="100" rows="20"></textarea>
+     <label for="content">Content: </label><br>
+        <textarea value="{{item.content}}" ngControl="content" cols="100" rows="20"></textarea><br>
      <button class="button" (click)="onSave(item._id)">Save</button>
    </form> 
 </div>

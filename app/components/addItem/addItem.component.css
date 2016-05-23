@@ -9,11 +9,11 @@ label{
 }
 textarea{
 	margin-top: 1em;
+	width: 100%;
 }
 
 .button{
 	margin-top:0.6em;
-	margin-left:7em; 
 	border: 1px solid #70A2BD;
 	background: #70A2BD;
 	color:#F0F0F0;

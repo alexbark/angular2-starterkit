@@ -35,18 +35,18 @@ export class ItemComponent implements OnInit{
 
     onSave(id){
         this.itemService.editItem(id, this.editForm.value);
-        TimerWrapper.setTimeout(() => {
-			this.editingItem = false;
-			this.getItem(id);
-			this.router.navigate(['/item/' + id]);
-		}, 300);
+        //TimerWrapper.setTimeout(() => {
+		//	this.editingItem = false;
+		//	this.getItem(id);
+		//	this.router.navigate(['/item/' + id]);
+		//}, 500);
     }
 
     onDelete(id){
 		this.itemService.deleteItem(id);
-        TimerWrapper.setTimeout(() => {
-			this.router.navigate(['/items']);
-		}, 300);
+        //TimerWrapper.setTimeout(() => {
+		//	this.router.navigate(['/items']);
+		//}, 500);
     } 
 
     getItem(id){

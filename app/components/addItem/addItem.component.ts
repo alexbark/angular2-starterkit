@@ -24,8 +24,8 @@ export class AddItemComponent{
 	}
 	onFormSubmit(event){
 		this.itemService.addItem(this.userForm.value);
-		TimerWrapper.setTimeout(() => {
-			this.router.navigate(['/items']);
-		}, 300);
+		//TimerWrapper.setTimeout(() => {
+		//	this.router.navigate(['/items']);
+		//}, 500);
 	}
 }

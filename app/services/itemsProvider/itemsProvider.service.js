@@ -29,29 +29,32 @@ var ItemService = (function () {
             .map(function (res) { return res.json(); });
     };
     ItemService.prototype.addItem = function (obj) {
+        var _this = this;
         var body = JSON.stringify(obj);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http
             .post(this.itemsAPIUrl, body, { headers: headers })
             .map(function (res) { return res.json(); })
-            .subscribe();
+            .subscribe(function (res) { return _this.router.navigate(['/items']); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
     };
     ItemService.prototype.deleteItem = function (id) {
+        var _this = this;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http.delete(this.itemsAPIUrl + '/' + id, { headers: headers })
             .map(function (res) { return res.json(); })
-            .subscribe();
+            .subscribe(function (res) { return _this.router.navigate(['/items']); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
     };
     ItemService.prototype.editItem = function (id, obj) {
+        var _this = this;
         var body = JSON.stringify(obj);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http
             .post(this.itemsAPIUrl + '/' + id, body, { headers: headers })
             .map(function (res) { return res.json(); })
-            .subscribe();
+            .subscribe(function (res) { return _this.router.navigate(['/items']); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
     };
     ItemService = __decorate([
         core_1.Injectable(), 

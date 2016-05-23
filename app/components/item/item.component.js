@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
-var async_1 = require('@angular/common/src/facade/async');
 var itemsProvider_service_1 = require('./../../services/itemsProvider/itemsProvider.service');
 var ItemComponent = (function () {
     function ItemComponent(itemService, router, fb) {
@@ -30,20 +29,18 @@ var ItemComponent = (function () {
         this.editingItem = true;
     };
     ItemComponent.prototype.onSave = function (id) {
-        var _this = this;
         this.itemService.editItem(id, this.editForm.value);
-        async_1.TimerWrapper.setTimeout(function () {
-            _this.editingItem = false;
-            _this.getItem(id);
-            _this.router.navigate(['/item/' + id]);
-        }, 300);
+        //TimerWrapper.setTimeout(() => {
+        //	this.editingItem = false;
+        //	this.getItem(id);
+        //	this.router.navigate(['/item/' + id]);
+        //}, 500);
     };
     ItemComponent.prototype.onDelete = function (id) {
-        var _this = this;
         this.itemService.deleteItem(id);
-        async_1.TimerWrapper.setTimeout(function () {
-            _this.router.navigate(['/items']);
-        }, 300);
+        //TimerWrapper.setTimeout(() => {
+        //	this.router.navigate(['/items']);
+        //}, 500);
     };
     ItemComponent.prototype.getItem = function (id) {
         var _this = this;

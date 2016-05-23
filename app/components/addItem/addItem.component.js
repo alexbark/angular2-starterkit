@@ -26,11 +26,10 @@ var AddItemComponent = (function () {
         });
     }
     AddItemComponent.prototype.onFormSubmit = function (event) {
-        var _this = this;
         this.itemService.addItem(this.userForm.value);
-        async_1.TimerWrapper.setTimeout(function () {
-            _this.router.navigate(['/items']);
-        }, 300);
+        //TimerWrapper.setTimeout(() => {
+        //	this.router.navigate(['/items']);
+        //}, 500);
     };
     AddItemComponent = __decorate([
         core_1.Component({

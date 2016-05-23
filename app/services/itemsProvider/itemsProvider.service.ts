@@ -32,7 +32,11 @@ export class ItemService {
         this.http
             .post(this.itemsAPIUrl, body, { headers: headers })
             .map(res => res.json())
-            .subscribe();
+            .subscribe(
+			     res => this.router.navigate(['/items']),
+			     err => console.log('some error'),
+			     () => console.log('success get')
+            );
 	}
 
 	deleteItem(id){
@@ -41,7 +45,12 @@ export class ItemService {
 
         this.http.delete(this.itemsAPIUrl + '/' + id, { headers: headers })
 			.map(res => res.json())
-            .subscribe();
+            .subscribe(
+			    res => this.router.navigate(['/items']),
+			    err => console.log('some error'),
+			    () => console.log('success get') 
+
+            );
 
 	}
 
@@ -53,7 +62,12 @@ export class ItemService {
 		this.http
             .post(this.itemsAPIUrl + '/' + id, body, { headers: headers })
             .map(res => res.json())
-            .subscribe();
+            .subscribe(
+			    res => this.router.navigate(['/items']),
+			    err => console.log('some error'),
+			    () => console.log('success get')    
+ 
+            );
 
 	}
 }
