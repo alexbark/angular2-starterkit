@@ -2,27 +2,16 @@ var express = require("express");
 var mongoose = require("mongoose");
 var cors = require("cors");
 var bodyParser = require("body-parser");
+
+var Item = require('./models/item.model');
+
 var app = express();
-var Schema = mongoose.Schema;
-
-var ItemSchema = new Schema({
-    title: String,
-    author: String,
-    content: String
-
-});
-
-mongoose.model("Item", ItemSchema);
-
-var Item = mongoose.model('Item');
-
 app.use(cors());
-
 app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost/items');
 
-//ROUTES
 
+//ROUTES
 app.get('/api/items', function(req, res){
     Item.find(function(err, docs){
         res.send(docs);
@@ -53,7 +42,7 @@ app.delete('/api/items/:id', function(req, res){
    Item.remove({_id: req.params.id}, function(err){
       res.send({_id: req.params.id});
    })
-})  
+}) 
 
  var port = 5678;
  app.listen(port, function() {
