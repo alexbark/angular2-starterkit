@@ -54,7 +54,7 @@ var ItemService = (function () {
         this.http
             .post(this.itemsAPIUrl + '/' + id, body, { headers: headers })
             .map(function (res) { return res.json(); })
-            .subscribe(function (res) { return _this.router.navigate(['/items']); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
+            .subscribe(function (res) { return _this.router.navigate(['/item/' + id]); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
     };
     ItemService = __decorate([
         core_1.Injectable(), 

@@ -29,10 +29,19 @@ var ItemComponent = (function () {
         this.editingItem = true;
     };
     ItemComponent.prototype.onSave = function (id) {
+        if (this.editForm.value.title == "") {
+            this.editForm.value.title = this.item.title;
+        }
+        if (this.editForm.value.author == "") {
+            this.editForm.value.author = this.item.author;
+        }
+        if (this.editForm.value.content == "") {
+            this.editForm.value.content = this.item.content;
+        }
         this.itemService.editItem(id, this.editForm.value);
         //TimerWrapper.setTimeout(() => {
-        //	this.editingItem = false;
-        //	this.getItem(id);
+        this.editingItem = false;
+        this.getItem(id);
         //	this.router.navigate(['/item/' + id]);
         //}, 500);
     };
