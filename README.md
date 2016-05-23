@@ -19,8 +19,23 @@ Usage:
 5. Run backend server from folder /angular2-starterkit/back with command:  node server  
 6. Run lite-server from /angular2-starterkit with command: npm start  
 
+For now app loads from this: <script src="./dist/bundle.js"></script> from index.html file  
+All systemjs related files are commented to get rid of a lot of requests. Probably for development you mau want to use it. So uncomment these stuff:    
+<!--<script src="node_modules/systemjs/dist/system.src.js"></script>-->    
+ <!--<script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+ </script>-->  
+ 
+ Also comment this:    
+ <script src="./dist/bundle.js"></script>  
+ 
+ When whole work is done you can bundle bunch of .js files into ine with next command: npm run build  
+ After that uncomment bundle.js file back and comment all systemjs related files back
+
+
 Future work:  
 
-1. Gulp tasks for bundling files and buildning dev package  
+1. Gulp tasks for bundling files and buildning dev package (partially done for .js files with webpack)  
 2. Make backend more modulish with adding som usefull features  
 3. Integration with ng2-material  
