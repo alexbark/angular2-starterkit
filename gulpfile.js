@@ -28,11 +28,3 @@ gulp.task('default', function(){
 	   .pipe(gulp.dest('public'))
 })
 
-gulp.task('compile', function(){
-	return gulp
-	   .src('app/**/*.ts')
-	   .pipe(typescript(tscConfig.compilerOptions))
-	   .pipe(sourcemaps.write('.'))
-	   .pipe(gulp.dest('dist/app'))
-})
-
