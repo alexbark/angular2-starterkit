@@ -18,8 +18,8 @@ Usage:
 Then:   
 
 1. Run mongodb (from console command: mongod)   
-2. Run backend server from folder /angular2-starterkit/back with command:  node server  
-3. Run lite-server from /angular2-starterkit with command: npm start  
+2. Run backend server from folder /angular2-starterkit/back with command:  **node server**  
+3. Run lite-server from /angular2-starterkit with command: **npm start** 
 
 
 For now app loads from this:     
