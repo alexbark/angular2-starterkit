@@ -25,3 +25,14 @@ textarea{
 .button:active{
 	background: #447088;
 }
+form .button:last-child{
+	marging-left:6em;
+	background: rgba(0,0,0, .2);
+	border: 1px solid rgba(0,0,0, .1);
+}
+form .button:last-child:hover{
+	background: rgba(0,0,0, .4);
+}
+form .button:last-child:active{
+	background: rgba(0,0,0, .6);
+}

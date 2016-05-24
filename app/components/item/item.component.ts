@@ -46,11 +46,11 @@ export class ItemComponent implements OnInit{
 		}
 
         this.itemService.editItem(id, this.editForm.value);
-        //TimerWrapper.setTimeout(() => {
-		    this.editingItem = false;
+        TimerWrapper.setTimeout(() => {
+		   this.editingItem = false;
 		    this.getItem(id);
-		//	this.router.navigate(['/item/' + id]);
-		//}, 500);
+			this.router.navigate(['/item/' + id]);
+		}, 500);
     }
 
     onDelete(id){
@@ -73,5 +73,13 @@ export class ItemComponent implements OnInit{
 		var temp = window.location.href.split('/');
 		this.itemId = temp[temp.length - 1];
 	    this.getItem(this.itemId);
+    }
+
+    onCancel(id){
+		this.router.navigate(['/item/' + id]);
+		this.editingItem = false;
+    }
+    onBack(){
+		this.router.navigate(['/items']);
     }
  }

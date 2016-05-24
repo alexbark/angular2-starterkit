@@ -44928,14 +44928,16 @@
 	            .subscribe(function (res) { return _this.router.navigate(['/items']); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
 	    };
 	    ItemService.prototype.editItem = function (id, obj) {
-	        var _this = this;
 	        var body = JSON.stringify(obj);
 	        var headers = new http_1.Headers();
 	        headers.append('Content-Type', 'application/json');
 	        this.http
 	            .post(this.itemsAPIUrl + '/' + id, body, { headers: headers })
 	            .map(function (res) { return res.json(); })
-	            .subscribe(function (res) { return _this.router.navigate(['/item/' + id]); }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
+	            .subscribe(function (res) {
+	            //this.router.navigate(['/item/' + id]);
+	            //this.getItem(id);
+	        }, function (err) { return console.log('some error'); }, function () { return console.log('success get'); });
 	    };
 	    ItemService = __decorate([
 	        core_1.Injectable(), 
@@ -45101,6 +45103,7 @@
 	var http_1 = __webpack_require__(306);
 	var common_1 = __webpack_require__(181);
 	var router_1 = __webpack_require__(280);
+	var async_1 = __webpack_require__(185);
 	var itemsProvider_service_1 = __webpack_require__(327);
 	var ItemComponent = (function () {
 	    function ItemComponent(itemService, router, fb) {
@@ -45118,6 +45121,7 @@
 	        this.editingItem = true;
 	    };
 	    ItemComponent.prototype.onSave = function (id) {
+	        var _this = this;
 	        if (this.editForm.value.title == "") {
 	            this.editForm.value.title = this.item.title;
 	        }
@@ -45128,11 +45132,11 @@
 	            this.editForm.value.content = this.item.content;
 	        }
 	        this.itemService.editItem(id, this.editForm.value);
-	        //TimerWrapper.setTimeout(() => {
-	        this.editingItem = false;
-	        this.getItem(id);
-	        //	this.router.navigate(['/item/' + id]);
-	        //}, 500);
+	        async_1.TimerWrapper.setTimeout(function () {
+	            _this.editingItem = false;
+	            _this.getItem(id);
+	            _this.router.navigate(['/item/' + id]);
+	        }, 500);
 	    };
 	    ItemComponent.prototype.onDelete = function (id) {
 	        this.itemService.deleteItem(id);
@@ -45149,6 +45153,13 @@
 	        var temp = window.location.href.split('/');
 	        this.itemId = temp[temp.length - 1];
 	        this.getItem(this.itemId);
+	    };
+	    ItemComponent.prototype.onCancel = function (id) {
+	        this.router.navigate(['/item/' + id]);
+	        this.editingItem = false;
+	    };
+	    ItemComponent.prototype.onBack = function () {
+	        this.router.navigate(['/items']);
 	    };
 	    ItemComponent = __decorate([
 	        core_1.Component({
@@ -45199,6 +45210,9 @@
 	        //TimerWrapper.setTimeout(() => {
 	        //	this.router.navigate(['/items']);
 	        //}, 500);
+	    };
+	    AddItemComponent.prototype.onCancel = function () {
+	        this.router.navigate(['/items']);
 	    };
 	    AddItemComponent = __decorate([
 	        core_1.Component({

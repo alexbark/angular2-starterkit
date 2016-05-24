@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
+var async_1 = require('@angular/common/src/facade/async');
 var itemsProvider_service_1 = require('./../../services/itemsProvider/itemsProvider.service');
 var ItemComponent = (function () {
     function ItemComponent(itemService, router, fb) {
@@ -29,6 +30,7 @@ var ItemComponent = (function () {
         this.editingItem = true;
     };
     ItemComponent.prototype.onSave = function (id) {
+        var _this = this;
         if (this.editForm.value.title == "") {
             this.editForm.value.title = this.item.title;
         }
@@ -39,11 +41,11 @@ var ItemComponent = (function () {
             this.editForm.value.content = this.item.content;
         }
         this.itemService.editItem(id, this.editForm.value);
-        //TimerWrapper.setTimeout(() => {
-        this.editingItem = false;
-        this.getItem(id);
-        //	this.router.navigate(['/item/' + id]);
-        //}, 500);
+        async_1.TimerWrapper.setTimeout(function () {
+            _this.editingItem = false;
+            _this.getItem(id);
+            _this.router.navigate(['/item/' + id]);
+        }, 500);
     };
     ItemComponent.prototype.onDelete = function (id) {
         this.itemService.deleteItem(id);
@@ -60,6 +62,13 @@ var ItemComponent = (function () {
         var temp = window.location.href.split('/');
         this.itemId = temp[temp.length - 1];
         this.getItem(this.itemId);
+    };
+    ItemComponent.prototype.onCancel = function (id) {
+        this.router.navigate(['/item/' + id]);
+        this.editingItem = false;
+    };
+    ItemComponent.prototype.onBack = function () {
+        this.router.navigate(['/items']);
     };
     ItemComponent = __decorate([
         core_1.Component({

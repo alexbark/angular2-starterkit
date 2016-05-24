@@ -28,4 +28,8 @@ export class AddItemComponent{
 		//	this.router.navigate(['/items']);
 		//}, 500);
 	}
+
+	onCancel(){
+		this.router.navigate(['/items']);
+	}
 }

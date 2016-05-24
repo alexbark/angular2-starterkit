@@ -63,7 +63,13 @@ export class ItemService {
             .post(this.itemsAPIUrl + '/' + id, body, { headers: headers })
             .map(res => res.json())
             .subscribe(
-			    res => this.router.navigate(['/item/' + id]),
+			res => { 
+				      //this.router.navigate(['/item/' + id]);
+					  //this.getItem(id);
+
+
+
+		            },
 			    err => console.log('some error'),
 			    () => console.log('success get')    
  

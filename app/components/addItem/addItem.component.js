@@ -31,6 +31,9 @@ var AddItemComponent = (function () {
         //	this.router.navigate(['/items']);
         //}, 500);
     };
+    AddItemComponent.prototype.onCancel = function () {
+        this.router.navigate(['/items']);
+    };
     AddItemComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/components/addItem/addItem.component.tmpl.html',

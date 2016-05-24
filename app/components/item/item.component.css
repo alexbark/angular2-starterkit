@@ -50,6 +50,7 @@ h3:first-letter{
 }
 .actions .button:first-child{
     float:left;
+    margin-right: 0.5em;
 	border: 1px solid #70A2BD;
 	background: #70A2BD;
 	color:#F0F0F0;
@@ -77,4 +78,30 @@ h3:first-letter{
    background:#BB7B3E;
    -moz-outline-style: none; 
    outline: none;
+}
+
+form .button:last-child{
+	marging-left:6em;
+	background: rgba(0,0,0, .2);
+	border: 1px solid rgba(0,0,0, .1);
+}
+form .button:last-child:hover{
+	background: rgba(0,0,0, .4);
+}
+form .button:last-child:active{
+	background: rgba(0,0,0, .6);
+}
+
+.back{
+	float:left;
+	background: rgba(0,0,0, .2);
+	color:#F0F0F0;
+	font-size: bolder;
+	border: 1px solid rgba(0,0,0, .1);
+}
+.back:hover{
+	background: rgba(0,0,0, .4);
+}
+.back:active{
+	background: rgba(0,0,0, .6);
 }
