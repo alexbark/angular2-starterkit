@@ -45194,19 +45194,26 @@
 	var common_1 = __webpack_require__(181);
 	var itemsProvider_service_1 = __webpack_require__(327);
 	var async_1 = __webpack_require__(185);
+	var custom_validator_1 = __webpack_require__(333);
 	var AddItemComponent = (function () {
 	    function AddItemComponent(fb, itemService, router) {
 	        this.fb = fb;
 	        this.itemService = itemService;
 	        this.router = router;
+	        this.formIsValid = true;
 	        this.userForm = this.fb.group({
-	            'title': ['', common_1.Validators.required],
+	            'title': ['', common_1.Validators.compose([common_1.Validators.required, custom_validator_1.CustomValidator.checkUnderscore])],
 	            'author': ['', common_1.Validators.required],
 	            'content': ['', common_1.Validators.required]
 	        });
 	    }
 	    AddItemComponent.prototype.onFormSubmit = function (event) {
-	        this.itemService.addItem(this.userForm.value);
+	        if (this.userForm._status == "INVALID") {
+	            this.formIsValid = false;
+	        }
+	        if (this.userForm._status == "VALID") {
+	            this.itemService.addItem(this.userForm.value);
+	        }
 	        //TimerWrapper.setTimeout(() => {
 	        //	this.router.navigate(['/items']);
 	        //}, 500);
@@ -45226,6 +45233,27 @@
 	}());
 	exports.AddItemComponent = AddItemComponent;
 	//# sourceMappingURL=addItem.component.js.map
+
+/***/ },
+/* 333 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var CustomValidator = (function () {
+	    function CustomValidator() {
+	    }
+	    //undercsoreNotFound: boolean = false;
+	    CustomValidator.checkUnderscore = function (control) {
+	        if (control.value.indexOf('_') >= 0) {
+	            return null;
+	        }
+	        //console.log(this.control); 
+	        return { underscoreNotFound: true };
+	    };
+	    return CustomValidator;
+	}());
+	exports.CustomValidator = CustomValidator;
+	//# sourceMappingURL=custom.validator.js.map
 
 /***/ }
 /******/ ]);

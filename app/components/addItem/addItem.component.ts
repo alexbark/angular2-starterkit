@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/common';
+import { Control, ControlGroup, FormBuilder, Validators } from '@angular/common';
 import { ItemService} from './../../services/itemsProvider/itemsProvider.service';
 import {TimerWrapper} from '@angular/common/src/facade/async';
+import { CustomValidator} from './../../services/validators/custom.validator';
 
 @Component({
 	templateUrl: 'app/components/addItem/addItem.component.tmpl.html',
@@ -12,18 +13,25 @@ import {TimerWrapper} from '@angular/common/src/facade/async';
 })
 
 export class AddItemComponent{
-	userForm:any;
+	userForm:ControlGroup;
+	formIsValid: boolean = true;
 
 	constructor(private fb: FormBuilder, private itemService: ItemService, private router: Router){
 		this.userForm = this.fb.group({
-			'title': ['', Validators.required],
+			'title': ['', Validators.compose([Validators.required, CustomValidator.checkUnderscore])],
 			'author': ['', Validators.required],
 			'content': ['', Validators.required]
 		});
 
 	}
 	onFormSubmit(event){
-		this.itemService.addItem(this.userForm.value);
+		if(this.userForm._status == "INVALID"){
+			this.formIsValid = false;
+			
+		}
+        if (this.userForm._status == "VALID") {
+        	this.itemService.addItem(this.userForm.value);
+        }
 		//TimerWrapper.setTimeout(() => {
 		//	this.router.navigate(['/items']);
 		//}, 500);
