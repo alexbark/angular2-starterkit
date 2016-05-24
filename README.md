@@ -1,6 +1,6 @@
 # angular2-starterkit
 
-Almost bare seed to start develop with angular2 and TypeScript
+Project to start develop with angular2 and TypeScript
 
 Features:  
 1. Several components  
