@@ -18,7 +18,7 @@ export class AddItemComponent{
 
 	constructor(private fb: FormBuilder, private itemService: ItemService, private router: Router){
 		this.userForm = this.fb.group({
-			'title': ['', Validators.compose([Validators.required, CustomValidator.checkUnderscore])],
+			'title': ['', Validators.compose([Validators.required , CustomValidator.checkUnderscore])],
 			'author': ['', Validators.required],
 			'content': ['', Validators.required]
 		});

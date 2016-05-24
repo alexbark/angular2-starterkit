@@ -42062,8 +42062,8 @@
 	var about_component_1 = __webpack_require__(303);
 	var home_component_1 = __webpack_require__(304);
 	var items_component_1 = __webpack_require__(305);
-	var item_component_1 = __webpack_require__(331);
-	var addItem_component_1 = __webpack_require__(332);
+	var item_component_1 = __webpack_require__(332);
+	var addItem_component_1 = __webpack_require__(333);
 	var MainComponent = (function () {
 	    function MainComponent(router) {
 	        this.router = router;
@@ -42172,10 +42172,12 @@
 	var http_1 = __webpack_require__(306);
 	var itemsProvider_service_1 = __webpack_require__(327);
 	var search_pipe_1 = __webpack_require__(330);
+	var order_pipe_1 = __webpack_require__(331);
 	var ItemsComponent = (function () {
 	    function ItemsComponent(router, itemService) {
 	        this.router = router;
 	        this.itemService = itemService;
+	        this.orderBy = 'asc';
 	    }
 	    ItemsComponent.prototype.onAddNewItemClick = function () {
 	        this.router.navigate(['/add']);
@@ -42192,11 +42194,14 @@
 	    ItemsComponent.prototype.onItemClick = function (id) {
 	        this.router.navigate(['/item/' + id]);
 	    };
+	    ItemsComponent.prototype.onOrderBy = function () {
+	        this.orderBy == 'asc' ? this.orderBy = 'desc' : this.orderBy = 'asc';
+	    };
 	    ItemsComponent = __decorate([
 	        core_1.Component({
 	            templateUrl: 'app/components/items/items.component.tmpl.html',
 	            styleUrls: ['app/components/items/items.component.css'],
-	            pipes: [search_pipe_1.SearchPipe],
+	            pipes: [search_pipe_1.SearchPipe, order_pipe_1.OrderPipe],
 	            providers: [itemsProvider_service_1.ItemService, http_1.HTTP_PROVIDERS]
 	        }), 
 	        __metadata('design:paramtypes', [router_1.Router, itemsProvider_service_1.ItemService])
@@ -45100,6 +45105,49 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(7);
+	var OrderPipe = (function () {
+	    function OrderPipe() {
+	    }
+	    OrderPipe.prototype.transform = function (value, argument) {
+	        if (argument == 'asc') {
+	            value.sort(function (a, b) {
+	                return (a.title.toLowerCase() > b.title.toLowerCase()) ? 1
+	                    : (b.title.toLowerCase() > a.title.toLowerCase()) ? -1 : 0;
+	            });
+	            return value.filter(function (item) { return item.title; });
+	        }
+	        if (argument == 'desc') {
+	            value.sort(function (a, b) {
+	                return (a.title.toLowerCase() > b.title.toLowerCase()) ? -1
+	                    : (b.title.toLowerCase() > a.title.toLowerCase()) ? 1 : 0;
+	            });
+	            return value.filter(function (item) { return item.title; });
+	        }
+	    };
+	    OrderPipe = __decorate([
+	        core_1.Pipe({ name: 'order' }), 
+	        __metadata('design:paramtypes', [])
+	    ], OrderPipe);
+	    return OrderPipe;
+	}());
+	exports.OrderPipe = OrderPipe;
+	//# sourceMappingURL=order.pipe.js.map
+
+/***/ },
+/* 332 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(7);
 	var http_1 = __webpack_require__(306);
 	var common_1 = __webpack_require__(181);
 	var router_1 = __webpack_require__(280);
@@ -45175,7 +45223,7 @@
 	//# sourceMappingURL=item.component.js.map
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45194,7 +45242,7 @@
 	var common_1 = __webpack_require__(181);
 	var itemsProvider_service_1 = __webpack_require__(327);
 	var async_1 = __webpack_require__(185);
-	var custom_validator_1 = __webpack_require__(333);
+	var custom_validator_1 = __webpack_require__(334);
 	var AddItemComponent = (function () {
 	    function AddItemComponent(fb, itemService, router) {
 	        this.fb = fb;
@@ -45235,7 +45283,7 @@
 	//# sourceMappingURL=addItem.component.js.map
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports) {
 
 	"use strict";

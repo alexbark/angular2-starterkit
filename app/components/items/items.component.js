@@ -13,10 +13,12 @@ var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 var itemsProvider_service_1 = require('./../../services/itemsProvider/itemsProvider.service');
 var search_pipe_1 = require('./../../services/pipes/search.pipe');
+var order_pipe_1 = require('./../../services/pipes/order.pipe');
 var ItemsComponent = (function () {
     function ItemsComponent(router, itemService) {
         this.router = router;
         this.itemService = itemService;
+        this.orderBy = 'asc';
     }
     ItemsComponent.prototype.onAddNewItemClick = function () {
         this.router.navigate(['/add']);
@@ -33,11 +35,14 @@ var ItemsComponent = (function () {
     ItemsComponent.prototype.onItemClick = function (id) {
         this.router.navigate(['/item/' + id]);
     };
+    ItemsComponent.prototype.onOrderBy = function () {
+        this.orderBy == 'asc' ? this.orderBy = 'desc' : this.orderBy = 'asc';
+    };
     ItemsComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/components/items/items.component.tmpl.html',
             styleUrls: ['app/components/items/items.component.css'],
-            pipes: [search_pipe_1.SearchPipe],
+            pipes: [search_pipe_1.SearchPipe, order_pipe_1.OrderPipe],
             providers: [itemsProvider_service_1.ItemService, http_1.HTTP_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [router_1.Router, itemsProvider_service_1.ItemService])

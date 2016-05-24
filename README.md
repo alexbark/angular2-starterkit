@@ -5,8 +5,8 @@ Project to start develop with angular2 and TypeScript
 Features:  
 1. Several components  
 2. Basic routing  
-3. Example of custom filter(searching)     
-4. Examples of form validation (custom and built-in)   
+3. Example of custom filters(searching, orderBy(asc/desc))     
+4. Examples of form validation (custom and built-in).Custom validation is kinda stupid but just for demonstration purpose   
 5. Service with (GET, GET:ID, POST, PUT, DELETE) methods     
 6. Backend on mongodb    
 
