@@ -25,11 +25,11 @@ export class AddItemComponent{
 
 	}
 	onFormSubmit(event){
-		if(this.userForm._status == "INVALID"){
+		if(this.userForm.status == "INVALID"){
 			this.formIsValid = false;
 			
 		}
-        if (this.userForm._status == "VALID") {
+        if (this.userForm.status == "VALID") {
         	this.itemService.addItem(this.userForm.value);
         }
 		//TimerWrapper.setTimeout(() => {
