@@ -45073,12 +45073,16 @@
 	    function SearchPipe() {
 	    }
 	    SearchPipe.prototype.transform = function (value, argument) {
-	        // name is property of filtered object
+	        // title is property of filtered object
 	        if (argument === undefined) {
-	            return value.filter(function (item) { return item.title.match(/^./); });
+	            return value.filter(function (item) { return item.title.match(/^.*/); });
 	        }
 	        else {
-	            return value.filter(function (item) { return item.title.toLowerCase().match(argument.toLowerCase()); });
+	            return value.filter(function (item) {
+	                if (item.title.toLowerCase().indexOf(argument.toLowerCase()) > -1) {
+	                    return item.title;
+	                }
+	            });
 	        }
 	    };
 	    SearchPipe = __decorate([
