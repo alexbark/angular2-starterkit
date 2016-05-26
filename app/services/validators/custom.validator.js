@@ -7,7 +7,6 @@ var CustomValidator = (function () {
         if (control.value.indexOf('_') >= 0) {
             return null;
         }
-        //console.log(this.control); 
         return { underscoreNotFound: true };
     };
     return CustomValidator;

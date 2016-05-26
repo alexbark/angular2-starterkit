@@ -46,5 +46,5 @@ app.delete('/api/items/:id', function(req, res){
 
  var port = 5678;
  app.listen(port, function() {
-   console.log("Listening on " + port);
+   console.log("Backend server is listening on " + port);
  });

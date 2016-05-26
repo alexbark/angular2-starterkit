@@ -66,9 +66,6 @@ export class ItemService {
 			res => { 
 				      //this.router.navigate(['/item/' + id]);
 					  //this.getItem(id);
-
-
-
 		            },
 			    err => console.log('some error'),
 			    () => console.log('success get')    
